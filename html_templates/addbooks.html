@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Δίκτυο Σχολικών Βιβλιοθηκών</title>
+   <style> 
+      body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+      }
+      header {
+         background-color: #69169B;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding-left: 140px;
+      }
+      .container {
+         max-width: 400px;
+         margin: 50px auto;
+         padding: 20px;
+         background-color: #f0f0f0;
+         border-radius: 4px;
+      }
+      h1 {
+         margin: 0;
+	   font-size: 24px;
+           color: #E9E8EC;
+           flex: 1;
+           text-align: center;
+      }
+      h2 {
+         text-align: center;
+         margin-bottom: 20px;
+      }
+      .form-group {
+         margin-bottom: 15px;
+      }
+      .form-group label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+      }
+      .form-group input,
+      .form-group select {
+         width: 100%;
+         padding: 5px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+      }
+	.login-button {
+	  background-color: #14D0B2;
+	  color: white;
+	  padding: 10px 20px;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 16px;
+	  border-radius: 4px;
+	  text-decoration: none;
+	}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+   </style>
+</head>
+<body>
+      <header>
+        <h1><a href="http://127.0.0.1:5000/">Δίκτυο Σχολικών Βιβλιοθηκών</a></h1>
+        <button class="login-button" onclick="window.location.href='http://127.0.0.1:5000/logout'">Αποσύνδεση</button>
+      </header>
+<div class="container">
+      <h2>Προσθήκη νέου βιβλίου στο {{ school_name }}</h2>
+      <form action="http://127.0.0.1:5000/books/add" method="POST">
+         <div class="form-group">
+        <label for="isbn">ISBN:</label>
+        <input type="number" id="isbn" name="isbn" required><br>
+         </div>
+         <div class="form-group">
+        <label for="image">Εικόνα:</label>
+        <input type="text" id="image" name="image" required maxlength="1000"><br>
+         </div>
+         <div class="form-group">
+        <label for="title">Τίτλος:</label>
+        <input type="text" id="title" name="title" required maxlength="80"><br>
+         </div>
+         <div class="form-group">
+        <label for="languages">Γλώσσες:</label>
+        <input type="text" id="languages" name="languages" required maxlength="60"><br> 
+         </div>
+         <div class="form-group">
+        <label for="keywords">Λέξεις-κλειδιά:</label>
+        <input type="text" id="keywords" name="keywords" required maxlength="60"><br>
+         </div>
+         <div class="form-group">
+        <label for="publisher">Εκδότης:</label>
+        <input type="text" id="publisher" name="publisher" required maxlength="50"><br>
+         </div>
+         <div class="form-group">
+        <label for="page_num">Σελίδες:</label>
+        <input type="number" id="page_num" name="page_num" required><br>
+         </div>
+         <div class="form-group">
+        <label for="summary">Περίληψη:</label>
+        <textarea id="summary" name="summary" required maxlength="5000"></textarea><br>
+         </div>
+         <div class="form-group">
+        <label for="authors">Συγγραφείς (Ονόματα χωρισμένα με κόμμα):</label>
+        <input type="text" id="authors" name="authors" required maxlength="500"><br>
+         </div>
+         <div class="form-group">
+        <label for="categories">Κατηγορίες (Ονόματα χωρισμένα με κόμμα):</label>
+        <input type="text" id="categories" name="categories" required maxlength="500"><br>
+         </div>
+         <div class="form-group">
+        <label for="copies">Αντίτυπα:</label>
+        <input type="number" id="copies" name="copies" required><br>
+         </div>
+         <div class="form-group">
+  	<label for="title">Προσοχή:</label>
+	<label for="title">Αν το ISBN του βιβλίου που καταχωρείται ανήκει σε άλλο βιβλίο, πατώντας "Προσθήκη" θα επαναδρομολογηθείτε στην αντίστοιχη σελίδα για επεξεργασία.</label>
+        <button type="submit">Προσθήκη</button>
+         </div>
+     </form>
+</div>
+  </body>
+  </html>

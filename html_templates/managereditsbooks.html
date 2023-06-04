@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Επεξεργασία Βιβλίου</title>
+  <style> 
+      body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+      }
+      header {
+         background-color: #69169B;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding-left: 140px;
+      }
+      .container {
+         max-width: 400px;
+         margin: 50px auto;
+         padding: 20px;
+         background-color: #f0f0f0;
+         border-radius: 4px;
+      }
+      h1 {
+         margin: 0;
+	   font-size: 24px;
+           color: #E9E8EC;
+           flex: 1;
+           text-align: center;
+      }
+      h2 {
+         text-align: center;
+         margin-bottom: 20px;
+      }
+      .form-group {
+         margin-bottom: 15px;
+      }
+      .form-group label {
+         display: block;
+         margin-bottom: 5px;
+         font-weight: bold;
+      }
+      .form-group input,
+      .form-group select {
+         width: 100%;
+         padding: 5px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+      }
+	.login-button {
+	  background-color: #14D0B2;
+	  color: white;
+	  padding: 10px 20px;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 16px;
+	  border-radius: 4px;
+	  text-decoration: none;
+	}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="http://127.0.0.1:5000/">Δίκτυο Σχολικών Βιβλιοθηκών</a></h1>
+  <button class="login-button" onclick="window.location.href='http://127.0.0.1:5000/logout'">Αποσύνδεση</button>
+     </header>
+<div class="container">
+      <h2> Επεξεργασία Βιβλίου με ISBN {{ results[0][0] }}</h2>
+  <form action="http://127.0.0.1:5000/queries/query21/{{ results[0][0] }}/edit" method="POST">
+         <div class="form-group">
+    <label for="title">Τίτλος:</label>
+    <input type="text" id="title" name="title" value="{{ results[0][2] }}" required>
+         </div>
+         <div class="form-group">
+    <label for="image">Εικόνα:</label>
+    <input type="text" id="image" name="image" value="{{ results[0][1] }}" required>
+         </div>
+         <div class="form-group">
+    <label for="languages">Γλώσσες:</label>
+    <input type="text" id="languages" name="languages" value="{{ results[0][4] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="keywords">Λέξεις-Κλειδιά:</label>
+    <input type="text" id="keywords" name="keywords" value="{{ results[0][6] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="publisher">Εκδότης:</label>
+    <input type="text" id="publisher" name="publisher" value="{{ results[0][7] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="page_num">Σελίδες:</label>
+    <input type="number" id="page_num" name="page_num" value="{{ results[0][8] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="summary">Περίληψη:</label>
+    <textarea id="summary" name="summary" required>{{ results[0][9] }} </textarea><br>
+         </div>
+         <div class="form-group">
+    <label for="authors">Συγγραφείς:</label>
+    <input type="text" id="authors" name="authors" value="{{ results[0][3] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="categories">Κατηγορίες:</label>
+    <input type="text" id="categories" name="categories" value="{{ results[0][5] }}" required><br>
+         </div>
+         <div class="form-group">
+    <label for="categories">Αντίτυπα:</label>
+    <input type="number" id="copies" name="copies" value="{{ results[0][10] }}" required><br>
+         </div>
+    <button type="submit">Αποθήκευση</button>
+  </form>
+</div>
+</body>
+</html>
