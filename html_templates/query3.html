@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title> Δίκτυο Σχολικών Βιβλιοθηκών </title>
+   <style> 
+      body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+      }
+      header {
+         background-color: #69169B;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         padding-left: 140px;
+      }
+      h1 {
+         margin: 0;
+         font-size: 24px;
+         color: #E9E8EC;
+         flex: 1;
+         text-align: center;
+      }
+      .login-button {
+         background-color: #14D0B2;
+         color: white;
+         padding: 10px 20px;
+         border: none;
+         cursor: pointer;
+         font-size: 16px;
+         border-radius: 4px;
+         text-decoration: none;
+      }
+      .content {
+      text-align: center;
+      padding: 20px;
+      font-size: 15px;
+      font-family: Arial, sans-serif;
+	   }
+      .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin-top: 50px;
+      }
+      h2 {
+         margin-bottom: 10px;
+      }
+      form {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin-top: 20px;
+      }
+      form label,
+      form select {
+         margin-bottom: 10px;
+      }
+      #result {
+         text-align: center;
+         margin-top: 20px;
+      }
+
+      table {
+         border-collapse: collapse;
+         width: 100%;
+         margin-top: 20px;
+      }
+
+      th,
+      td {
+         border: 1px solid #ddd;
+         padding: 8px;
+      }
+
+      th {
+         background-color: #69169B;
+         color: white;
+      }
+
+      tr:nth-child(even) {
+         background-color: #f2f2f2;
+      }
+a {
+	color: inherit;
+	text-decoration: none;
+}
+   </style>
+</head>
+<body>
+   <header>
+      <h1><a href="http://127.0.0.1:5000/">Δίκτυο Σχολικών Βιβλιοθηκών</a></h1>
+      <button class="login-button" onclick="window.location.href='http://127.0.0.1:5000/logout'">Αποσύνδεση</button>
+   </header>
+   <div class="content">
+      <h2> Στοιχεία για νέους εκπαιδευτικούς</h2>
+   </div>
+<div id="result">
+      {% if results %}
+         <h3>Νέοι εκπαιδευτικοί με ηλικία κάτω των 40 ετών που έχουν δανειστεί</h3>
+         <table>
+		<thread>
+			<tr>
+				<th>Όνομα Καθηγητή/ήτριας</th>
+				<th>Επίθετο Καθηγητή/ήτριας</th>
+				<th>Δανεισμοί</th>
+			</tr>
+		</thread>
+		<tbody>
+               	{% for result in results %}
+                  	<tr>
+				{% for res in result %}
+					<td>{{ res }}</td>
+				{% endfor %}
+               		</tr>
+		{% endfor %}
+            	</tbody>
+	</table>
+      {% else %}
+         <p>Δεν βρέθηκαν εκπαιδευτικοί με ηλικία κάτω των 40 ετών που έχουν δανειστεί βιβλία.</p>
+      {% endif %}
+   </div>
+</body>
+</html>
